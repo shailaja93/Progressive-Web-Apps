@@ -1,5 +1,6 @@
 var cacheName = 'cache_version1';
 var cacheFiles = [
+   '/',
    'index.html',
    './css/modern-business.css',
    './font-awesome/css/font-awesome.min.css',
