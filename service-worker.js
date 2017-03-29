@@ -1,4 +1,4 @@
-var cacheName = 'cache_version4';
+var cacheName = 'cache_version1';
 var cacheFiles = [
    'index.html',
    './css/modern-business.css',
@@ -12,13 +12,19 @@ var cacheFiles = [
    './img/no-internet.png',
    './img/pwa.png',
    './img/service-worker.png',
-   './img/web-app.jpeg'
+   './img/web-app.jpeg',
+   './img/addtohomescreen.jpg',
+   './img/apicall.jpg',
+   './img/gooffline.png',
+   './img/homescreen.jpg',
+   './img/homescreenprompt.png',
+   './img/offlineapicall.jpg'
 ];
 self.addEventListener('install',function(e){
-  //  console.log("[Service Worker] Installed");
+   console.log("[Service Worker] Installed");
    e.waitUntil(
        caches.open(cacheName).then(function(cache){
-          //  console.log("[ServiceWorker] Caching cacheFiles");
+           console.log("[ServiceWorker] Caching cacheFiles");
            cache.addAll(cacheFiles);
        }).then(function() {
            return self.skipWaiting();
@@ -44,10 +50,10 @@ self.addEventListener('activate', function(e){
 })
 
 self.addEventListener('fetch',function(e){
-  //  console.log("[Service Worker] Fetching REQUEST URL",e. request.url);
+   console.log("[Service Worker] Fetching REQUEST URL",e. request.url);
    e.respondWith(
    caches.match(e.request).then(function(resp) {
-      //  console.log("Response from Cache",resp)
+       console.log("Response from Cache",resp)
        return resp || fetch(e.request)
        .then(function(response) {
            return caches.open(cacheName).then(function(cache)

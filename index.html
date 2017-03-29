@@ -56,20 +56,37 @@
             <div class="item active">
                 <div class="fill" style="background:url('./img/web-app.jpeg');background-repeat: no-repeat; background-size: 100% 100%;"></div>
                 <div class="carousel-caption">
-                    <h4>Click on Pwa app from Homescreen</h4>
+                    <h4>1) If doesn't get prompt do it manually : Check right image</h4>
+                     <img src="./img/homescreenprompt.png" alt="Generic placeholder image" width="200" height="350"/>
+                     <img src="./img/addtohomescreen.jpg" alt="Generic placeholder image" width="200" height="350"/>
+                </div>
+            </div>
+            <div class="item">
+                <div class="fill" style="background:url('./img/web-app.jpeg');background-repeat: no-repeat; background-size: 100% 100%;"></div>
+                <div class="carousel-caption">
+                    <h4>2) Open Pwa app from Homescreen</h4>
                     <img src="./img/homescreen.jpg" alt="Generic placeholder image" width="200" height="350"/>
                 </div>
             </div>
             <div class="item">
                 <div class="fill" style="background:url('./img/web-app.jpeg');background-repeat: no-repeat; background-size: 100% 100%;"></div>
                 <div class="carousel-caption">
-                    <h4>Service Worker has a different life cycle which is completely separate from the web page. In order to use the service worker it has to be registered by your app. If the page never had before service worker or the service worker  has been updated the browser gets the service worker and installs it.Hence after being installed it then gets activated. The service worker then controls the pages under the scope (Don’t worry if you are not aware with the scope will cover later). Once the service worker is in control it will handle fetch,message/push events. Note that the browser terminates the service worker to save memory and it will be restarted as needed.</h4>
+                    <h4>3) Click on below button to make an Api call</h4>
+                    <img src="./img/apicall.jpg" alt="Generic placeholder image" width="200" height="350"/>
                 </div>
             </div>
             <div class="item">
                 <div class="fill" style="background:url('./img/web-app.jpeg');background-repeat: no-repeat; background-size: 100% 100%;"></div>
                 <div class="carousel-caption">
-                    <h4>Web Manifest File gives the ability to control how your app appears to the user and more significantly how the app is launched.When a set of heuristics are met the web app prompts the user to add your app to the home screen. Then when the user opens up the home screen it opens up the full screen app with no browser UI. Thus it feels like any other native app.</h4>
+                    <h4>4) Go Offline : Disconnect Net Connectivity</h4>
+                    <img src="./img/gooffline.png" alt="Generic placeholder image" width="200" height="350"/>
+                </div>
+            </div>
+            <div class="item">
+                <div class="fill" style="background:url('./img/web-app.jpeg');background-repeat: no-repeat; background-size: 100% 100%;"></div>
+                <div class="carousel-caption">
+                    <h4>5) Again click to make an Api call to check whether it works offline!</h4>
+                    <img src="./img/offlineapicall.jpg" alt="Generic placeholder image" width="200" height="350"/>
                 </div>
             </div>
         </div>
@@ -134,9 +151,9 @@
 
     <!-- Script to Activate the Carousel -->
     <script>
-    $('.carousel').carousel({
-        interval: 5000 //changes the speed
-    })
+    // $('.carousel').carousel({
+    //     interval: 5000 //changes the speed
+    // })
 
     function getList() {
         $('.show-loader').removeClass('hide');
