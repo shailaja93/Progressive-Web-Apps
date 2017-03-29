@@ -4,30 +4,30 @@
        "blog_name": "Part 1",
        "blog_description":"Learn how to register service worker and cache the resources in our app on the initial load.",
        "blog_image":"./img/service-worker.png",
-       "blog_link":""
+       "blog_link":"https://medium.com/@shailajashah93/kick-starting-with-progressive-web-apps-part-1-6701c9ea348"
    },{
        "blog_id":"2",
        "blog_name": "Part 2",
        "blog_description":"Learn how to update the old service worker and cache the new response in Cache Storage.",
        "blog_image":"./img/service-worker.png",
-       "blog_link":""
+       "blog_link":"https://medium.com/@shailajashah93/kick-starting-with-progressive-web-apps-part-2-99c3dd969446"
    },{
        "blog_id":"3",
        "blog_name": "Part 3",
        "blog_description":"Learn how to get out the resources from the cache and intercept the network requests",
        "blog_image":"./img/service-worker.png",
-       "blog_link":""
+       "blog_link":"https://medium.com/@shailajashah93/kick-starting-with-progressive-web-apps-part-3-4d3f139f6f07"
    },{
        "blog_id":"4",
        "blog_name": "Part 4",
        "blog_description":"Learn how to make  our web app installable via the Web App Manifest File.",
        "blog_image":"./img/img-0.png",
-       "blog_link":""
+       "blog_link":"https://medium.com/@shailajashah93/kick-starting-with-progressive-web-apps-part-4-cd901de01a82"
    },{
        "blog_id":"5",
        "blog_name": "Part 5",
        "blog_description":"Learn to grey out the things when offline",
        "blog_image":"./img/no-internet.png",
-       "blog_link":""
+       "blog_link":"https://medium.com/@shailajashah93/kick-starting-with-progressive-web-apps-part-5-b7d6a4778bd1"
    }]
 }

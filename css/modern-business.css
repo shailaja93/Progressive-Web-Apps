@@ -139,10 +139,25 @@ However, delay the fade out process for 2.5 seconds */
     to {bottom: 0; opacity: 0;}
 }
 .is-offline{-webkit-filter:grayscale(1);filter:grayscale(1);cursor:default}
+.carousel-indicators{
+    bottom: 0;
+}
+.disp-inline {
+    display: inline-block;
+}
+.btn-repo {
+    float: right;
+    margin-top: 20px;
+}
 /* Responsive Styles */
 
 @media(max-width:767px) {
     header.carousel .carousel {
         height: 70%;
+    }
+    .btn-repo {
+        float: none;
+        margin-bottom: 20px;
+        margin-top: 10px;
     }
 }
