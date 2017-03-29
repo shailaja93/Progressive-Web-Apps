@@ -157,7 +157,9 @@ However, delay the fade out process for 2.5 seconds */
     }
     .btn-repo {
         float: none;
-        margin-bottom: 20px;
-        margin-top: 10px;
+        margin-left: 10px;
     }
+    header.carousel {
+        /*height: 100%;*/
+    }    
 }
