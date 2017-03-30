@@ -174,8 +174,9 @@
     function getList() {
         $('.show-loader').removeClass('hide');
         var response = '',i = 0 ;
-        $.get( "https://api.myjson.com/bins/wksxn", function( result ) {
+        $.get( "https://api.myjson.com/bins/ki7y7", function( result ) {
             response = result.data;
+            console.log(response);
             setTimeout(function(){
                 $('.parent-container').find('.blog-content').remove();
                 for(i=0;i<response.length;i++){
