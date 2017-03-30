@@ -156,10 +156,16 @@ However, delay the fade out process for 2.5 seconds */
         height: 70%;
     }
     .btn-repo {
-        float: none;
+        float: right;
         margin-left: 10px;
     }
     header.carousel {
         /*height: 100%;*/
-    }    
+    }
+    .navbar .set-text{
+        text-align: left;
+    }
+    .navbar .set-text h2{
+        font-size: 20px;
+    }
 }

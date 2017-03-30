@@ -35,7 +35,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
-            <div class="text-center">
+            <div class="text-center set-text">
                 <h2 class="clr-red disp-inline">Progressive Web App</h2>
                 <a class="fa fa-github fa-2x btn-repo" target="_blank" href="https://github.com/shailaja93/pwa"></a>
             </div>
@@ -60,7 +60,7 @@
             <div class="item active">
                 <div class="fill" style="background:url('./img/web-app.jpeg');background-repeat: no-repeat; background-size: 100% 100%;"></div>
                 <div class="carousel-caption">
-                    <h4>1)Add To Homescreen</h4>
+                    <h4>1)Open in browser</h4>
                      <img src="./img/homescreenprompt.png" alt="Generic placeholder image" width="200" height="350"/>
                 </div>
             </div>
@@ -127,13 +127,7 @@
             </div>
 
             <div class="parent-container hide">
-                <h2 class="text-center push-30">Kick starting with Progressive Web Apps </h2>
-                <div class="col-lg-4 text-center blog-content">
-                  <img class="rounded-circle" alt="Generic placeholder image" width="140" height="140">
-                  <h2 class="blog-head"></h2>
-                  <p class="blog-desc"></p>
-                  <p><a class="btn btn-secondary blog-link" role="button">View details »</a></p>
-                </div>        
+                <h2 class="text-center push-30">Kick starting with Progressive Web Apps </h2>     
             </div>
 
         </div>
@@ -179,25 +173,20 @@
 
     function getList() {
         $('.show-loader').removeClass('hide');
-        var response = '' ;
-        $.get( "https://api.myjson.com/bins/amlhb", function( result ) {
+        var response = '',i = 0 ;
+        $.get( "https://api.myjson.com/bins/wksxn", function( result ) {
             response = result.data;
-            var i = 0,cloned_div ='';
-            cloned_div = $(".parent-container").find('.blog-content').clone();
             setTimeout(function(){
+                $('.parent-container').find('.blog-content').remove();
                 for(i=0;i<response.length;i++){
                     $('.parent-container').removeClass('hide');
-                    $('.blog-content').find('.rounded-circle').eq(i).attr("src",response[i].blog_image);
-                    $('.blog-content').find('.blog-head').eq(i).html(response[i].blog_name);
-                    $('.blog-content').find('.blog-desc').eq(i).html(response[i].blog_description);
-                    $('.blog-content').find('.blog-link').eq(i).attr("href",response[i].blog_link);
-                    if(response.length > i + 1 ){
-                        $('.parent-container').append(cloned_div.clone());
-                    }
+                    $(".parent-container").append("<div class='col-lg-4 text-center blog-content'><img class='rounded-circle' alt='Generic placeholder image' src="+ response[i].blog_image +" width='140' height='140'><h2 class='blog-head'>"+ response[i].blog_name +"</h2><p class='blog-desc'>" + response[i].blog_description + "</p><p><a class='btn btn-secondary blog-link' href="+ response[i].blog_link +" role='button'>View details »</a></p></div>");
+                    if(i == 2){
+                        $('.parent-container').append("<div class='clearfix'></div>");
+                    }                    
                 }
                 $('.show-loader').addClass('hide');
-            },1500);
-            
+            },1500);  
         });
     }
     //
