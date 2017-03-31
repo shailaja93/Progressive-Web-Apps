@@ -190,37 +190,56 @@
             },1500);  
         });
     }
-
     //-----------------------------------------------------------
+    function urlB64ToUint8Array(base64String) {
+      const padding = '='.repeat((4 - base64String.length % 4) % 4);
+      const base64 = (base64String + padding)
+        .replace(/\-/g, '+')
+        .replace(/_/g, '/');
 
+      const rawData = window.atob(base64);
+      const outputArray = new Uint8Array(rawData.length);
+
+      for (let i = 0; i < rawData.length; ++i) {
+        outputArray[i] = rawData.charCodeAt(i);
+      }
+      return outputArray;
+    }
+    //-----------------------------------------------------------
+    
     function initialiseUI() {
       // Set the initial subscription value
-      swRegistration.pushManager.subscribe({userVisibleOnly: true})
-      .then(function(subscription) {
+      swRegistration.pushManager.getSubscription()
+      .then(function(subscription) {    
         isSubscribed = !(subscription === null);
-        
         if (isSubscribed) {
+          console.log(JSON.stringify(subscription));
           console.log('User is subscribed.');
         } else {
           console.log('User is NOT subscribed.');
+          subscribeUser();
         }
-
-        updateBtn();
       });
     }
 
     //-------------------------------------------------------------
-
-    function updateBtn() {
-      if (isSubscribed) {
-        console.log('Disable Push Messaging');
-      } else {
-        console.log('Enable Push Messaging');
-      }
+    
+    function subscribeUser() {
+      const applicationServerKey = urlB64ToUint8Array('BMf8OnLb5AbTaakERYUDprsDUKiYoNZ-bOWFg-R2QavbjM-7WtmFYmdeLamQ-DWhPatVqYFdzBgDpmri-SUrhbE');
+      swRegistration.pushManager.subscribe({
+        userVisibleOnly: true,
+        applicationServerKey: applicationServerKey
+      })
+      .then(function(subscription) {
+        console.log(JSON.stringify(subscription));
+        console.log('User is subscribed.');
+      })
+      .catch(function(err) {
+        console.log('Failed to subscribe the user: ', err);
+      });
     }
 
     //-------------------------------------------------------------
-
     if('serviceWorker' in navigator && 'PushManager' in window)
     {
       navigator.serviceWorker.register('./service-worker.js')
@@ -234,7 +253,7 @@
       });
     }
     else
-    {
+    {   
          console.log('Push messaging is not supported');
     }
 
