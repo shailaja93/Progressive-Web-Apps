@@ -69,3 +69,28 @@ self.addEventListener('fetch',function(e){
    })
  );
 })
+
+self.addEventListener('push',function(e){
+   // console.log("[Service Worker] Push ",e. request.url);
+   fetch("https://api.myjson.com/bins/e5b7j").then(function(response){
+      return response.json();
+   }).then(function(data){
+      console.log("DATA",data.data);
+      return self.registration.showNotification(data.data.title,{
+         body: data.data.body,
+         tag: data.data.tag,
+         data: {url: data.data.url}
+      });
+   });
+ })
+
+self.addEventListener('notificationclick', function(event) {
+  console.log('[Service Worker] Notification click Received.');
+
+  event.notification.close();
+
+  event.waitUntil(
+    clients.openWindow('https://developers.google.com/web/')
+  );
+});
+

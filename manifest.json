@@ -5,6 +5,7 @@
  "display": "standalone",
  "theme_color": "#d9ebf9",
  "background_color": "#d9ebf9",
+ "gcm_sender_id": "802081753017",
  "description": "Progressive Web App",
   "icons": [
        {

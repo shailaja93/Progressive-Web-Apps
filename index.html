@@ -190,42 +190,85 @@
             },1500);  
         });
     }
-    //
-    if('serviceWorker' in navigator)
-    {
-    navigator.serviceWorker.register('./service-worker.js')
-    .then(function(registration) {
-        // console.log('Service Worker Registered', registration);
-    });
+
+    //-----------------------------------------------------------
+
+    function initialiseUI() {
+      // Set the initial subscription value
+      swRegistration.pushManager.getSubscription({userVisibleOnly: true})
+      .then(function(subscription) {
+        isSubscribed = !(subscription === null);
+
+        if (isSubscribed) {
+          console.log('User IS subscribed.');
+        } else {
+          console.log('User is NOT subscribed.');
+        }
+
+        updateBtn();
+      });
     }
-window.addEventListener('load', function() {
-   function network_status(event) {
-       if (navigator.onLine) {
-          console.log("You are online!");
-          document.documentElement.classList.remove("is-offline");
-          var e = document.getElementById("snackbar");
-          e.style.backgroundColor = "#80B3FF";
-          e.innerHTML = "You are online!";
-          e.className = "show", setTimeout(function() {
-          e.className = e.className.replace("show", "")
-          }, 1500)
+
+    //-------------------------------------------------------------
+
+    function updateBtn() {
+      if (isSubscribed) {
+        console.log('Disable Push Messaging');
+      } else {
+        console.log('Enable Push Messaging');
+      }
+    }
+
+    //-------------------------------------------------------------
+
+    if('serviceWorker' in navigator && 'PushManager' in window)
+    {
+      navigator.serviceWorker.register('./service-worker.js')
+      .then(function(registration) {
+           console.log('Service Worker Registered', registration);
+           swRegistration = registration;
+           initialiseUI();
+      })
+      .catch(function(error) {
+           console.error('Service Worker Error', error);
+      });
+    }
+    else
+    {
+         console.log('Push messaging is not supported');
+    }
+
+    //--------------------------------------------------------
+    window.addEventListener('load', function() {
+       function network_status(event) {
+           if (navigator.onLine) {
+              console.log("You are online!");
+              document.documentElement.classList.remove("is-offline");
+              var e = document.getElementById("snackbar");
+              e.style.backgroundColor = "#80B3FF";
+              e.innerHTML = "You are online!";
+              e.className = "show", setTimeout(function() {
+              e.className = e.className.replace("show", "")
+              }, 1500)
+           }
+           else
+           {
+             console.log("You are offline!");
+             document.documentElement.classList.add("is-offline");
+             var e = document.getElementById("snackbar");
+             e.style.backgroundColor = "#333";
+             e.innerHTML = "You are offline!";
+             e.className = "show", setTimeout(function() {
+             e.className = e.className.replace("show", "")
+             }, 1500)
+           }
        }
-       else
-       {
-         console.log("You are offline!");
-         document.documentElement.classList.add("is-offline");
-         var e = document.getElementById("snackbar");
-         e.style.backgroundColor = "#333";
-         e.innerHTML = "You are offline!";
-         e.className = "show", setTimeout(function() {
-         e.className = e.className.replace("show", "")
-         }, 1500)
-       }
-   }
-window.addEventListener('online', network_status);
-window.addEventListener('offline', network_status);
-network_status();
-});
+    window.addEventListener('online', network_status);
+    window.addEventListener('offline', network_status);
+    network_status();
+    });
+
+    //------------------------------------------------------------
     </script>
 
 </body>
